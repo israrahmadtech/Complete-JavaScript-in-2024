@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            /* background-color: #212121; */
+            color: #fff;
+        }
+        .container{
+            text-align: center;
+            align-items: center;
+            width: 400px;
+            height: 400px;
+            margin-left: 35%;
+            background-color: #212121;
+            padding: 20px;
+            border-radius: 10px;
+        }
+        .heading{
+            /* text-align: center; */
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        button{
+            font-size: 17px;
+            padding: 0px 20px;
+            margin-bottom: 10px;
+        }
+        #result{
+            display: inline-block;
+        }
+        .bmi{
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="heading">BMI Calculator</h1>
+        <form>
+            <p><label>Height in CM: </label> <input id="height" type="number"></p>
+            <p><label>Weight in Kg: </label> <input id="weight" type="number"></p>
+            <button>Calculate</button>
+            <div>BMI = <div id="result"></div></div>
+            <div class="bmi">BMI Weight Guide: <div id="BMI_guide"></div></div>
+        </form>
+    </div>
+<script src="project_2.js"></script>
+</body>
+</html>

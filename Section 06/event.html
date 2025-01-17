@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Evenet and Evenet Listners</title>
+</head>
+
+<body style=" background-color: #414141; color: aliceblue;">
+    <h1>Amazing Photos</h1>
+    <div>
+        <ul id="images" style="display: flex;">
+            <li><img width="100px" id="blackCar" src="../img/black.jpg" alt="blackCar"></li>
+            <li><img width="100px" id="whiteCar" src="../img/white.jpg" alt="whiteCar"></li>
+            <li><img width="100px" id="redCar" src="../img/red.jpg" alt="redCar"></li>
+            <li><img width="100px" id="yellowCar" onclick="alert('RollsRoyce')" src="../img/yellow.jpg" alt="yellowCar"></li>
+            <li><img width="100px" id="grayCar" src="../img/graycar.jpg" alt="yellowCar"></li>
+            <li><a href="https://google.com" id="google" style="color: aliceblue;">Google</a></li>
+        </ul>
+    </div>
+</body>
+<script>
+    document.getElementById('redCar').onclick= function(){
+        alert('red car is clicked') // onclick is not a god way(don't give extra controls)
+    }
+    document.getElementById('whiteCar').addEventListener('click', function(){
+        alert('Clicked on white car')        
+    }, false) // false is third parameter which is default, you can change it
+
+    // attachEvent()  works same as addEventListner() in past
+    // jQuaery()
+
+    document.getElementById('blackCar').addEventListener('click', function(e){
+        console.log(e)        
+    })
+
+// Study These Evenets: type, timestamp, preventDefault, target, toElement, srcElement
+                        // clientX, clientY, screenX, screenY
+                        // altkey, ctrlkey, shiftkey, keyCode
+
+// Evenet Propagation:
+//                   false(default) called event bubbling
+//                   true called evenet capturing
+
+    // document.getElementById('images').addEventListener('click', function(){
+    //     console.log('clicked inside ul')
+    // }, false)
+
+    // document.getElementById('grayCar').addEventListener('click', function(){
+    //     console.log('clicked inside grayCar')
+    // }, false)
+// by default grayCar event executes first due to false(bubling) parameter
+// Bubbling goes from bottom to top(lower to hight)(inside to outside)
+
+    // document.getElementById('images').addEventListener('click', function(){
+    //     console.log('clicked inside ul')
+    // }, true)
+
+    // document.getElementById('grayCar').addEventListener('click', function(){
+    //     console.log('clicked inside grayCar')
+    // }, true) 
+// when we use true(capturing) ul event executes first
+// Capturing goes from top to bottom(hight to lower)(outside to inside)
+// This movement of events called Propagation of events
+
+// .stopPropagation() can stop event prpagation as:
+//  Capturing:
+    // document.getElementById('images').addEventListener('click', function(){
+    //     console.log('clicked inside ul')
+    // }, true)
+    // document.getElementById('grayCar').addEventListener('click', function(e){
+    //         e.stopPropagation()
+    // }, true)
+
+//  Bubbling:
+    document.getElementById('images').addEventListener('click', function(){
+        console.log('clicked inside ul')
+    }, false)
+    document.getElementById('grayCar').addEventListener('click', function(e){
+        console.log('clicked inside grayCAr')
+            e.stopPropagation()
+    }, false)
+
+//  .preventDefault() methode is used to stop default behavior of something as:
+    document.querySelector('#google').addEventListener('click', function(e){
+        console.log('google clicked')
+        e.preventDefault() // google page not open when click on google link
+        e.stopPropagation() // stopping bubbling propagation
+    })
+
+    
+</script>
+
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Set Time Out</title>
+</head>
+<body>
+    <h1>Asynchronous</h1>
+    <p>Adding Something</p>
+    <button id="stop">Stop</button>
+</body>
+<script>
+    // setTimeout(function/callback/handler, TimeInterval)
+    //  Used to run a specific code after a specific time interval
+    setTimeout(function(){
+        console.log('Run the code after 2 seconds')
+    }, 2000) // 2000 milli seconnds = 2 second
+
+// You can do the same work by other way as:
+    const functionName = function(){
+        console.log('Run the code after 3 seconds')
+    }
+    setTimeout(functionName, 3000)
+
+// I want to change innerHTML of h1 after 2 seconds as:
+    const delayMessage = setTimeout(function(){
+        document.querySelector('h1').innerHTML = 'Asynchronous Operator'
+    }, 2000) 
+
+// You can stop this execution if you donot want as:
+
+// clearTimeOut(reference) : used to stop setTimeInterval
+    clearTimeout(delayMessage)
+
+// Using clearTimeOut through event as:
+    const addTimeOut = setTimeout(function(){
+        document.querySelector('p').innerHTML = 'But i am stoping'
+    }, 4000)
+    document.querySelector('#stop').addEventListener('click', function(){
+        clearTimeout(addTimeOut)
+        setTimeout(function(){
+            console.log('setTimeout is stopped')
+        }, 5000)
+    })
+</script>
+</html>

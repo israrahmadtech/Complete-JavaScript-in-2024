@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Set Interval</title>
+</head>
+<body>
+    <h1>Asynchronous</h1>
+    <p>Adding Something</p>
+    <button id="start">Start</button>
+    <button id="stop">Stop</button>
+</body>
+<script>
+    // setInterval: Run a specific code again and again after a specific time interval
+    setInterval(function(){
+        // console.log('Israr')
+    }, 1000)
+
+// You can stop this interval as:
+    const stopInterval = setInterval(function(thirdparameter){
+        console.log('Israr', Date.now() , thirdparameter)
+    }, 1000, 'third parameter')
+    clearInterval(stopInterval)
+    
+// Applying setInterval() and clearInterval() to buttons as:
+    const startInterval = setInterval(function(){
+        const randomNum = parseInt(Math.random()*100+1)
+        document.querySelector('p').innerHTML = randomNum
+    }, 800)
+    document.querySelector('#stop').addEventListener('click', function(){
+        clearInterval(startInterval) // stop interval
+    })
+</script>
+</html>

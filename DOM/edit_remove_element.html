@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit or Remove Element</title>
+</head>
+<body>
+    <ul class="language">
+        <li>JavaScript</li>
+    </ul>
+
+    <!-- Moving Text  -->
+    <marquee behavior="round" direction="left">Transition</marquee>
+
+</body>
+<script>
+    function addLanguage(language){
+        const li = document.createElement('li');
+        li.innerHTML = `${language}`
+        document.querySelector('.language').appendChild(li)
+    }
+    addLanguage('Next Js')
+    addLanguage('React Js')
+
+// addLanguage === addOptiLanguage    but addOptiLanguage is best way
+
+    function addOptiLanguage(language){
+        const li = document.createElement('li')
+        li.appendChild(document.createTextNode(language))
+        document.querySelector('.language').appendChild(li)
+    }
+    addOptiLanguage('HTML')
+    addOptiLanguage('CSS')
+
+// Edit Element
+    const secondLang = document.querySelector('li:nth-child(2)')
+    // secondLang.innerHTML = "Re-edited" // not good way
+
+    const newLi = document.createElement('li')
+    newLi.textContent = 'Python'
+    secondLang.replaceWith(newLi) // replacing
+
+// Edit
+    const firstLang = document.querySelector('li:first-child')
+    console.log(firstLang.innerText)
+    // firstLang.innerHTML = 'coding'
+    const newli = document.createElement('li')
+    firstLang.outerHTML = '<li> JS </li>'
+
+// Remove Element:
+    const removeLang = document.querySelector('li:last-child')
+    console.log(removeLang.innerHTML)
+    removeLang.remove()
+
+</script>
+</html>

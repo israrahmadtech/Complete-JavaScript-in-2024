@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project One With Async</title>
+</head>
+
+<body>
+    <h1>Press Start to start changing background</h1>
+    <button id="start">Start</button>
+    <button id="stop">Stop</button>
+</body>
+<script>
+    // Generate Random Color
+    const randomColor = function () {
+        let hexaValues = '123456789ABCDEF'
+        let color = '#'
+        for (let i = 0; i < 6; i++) {
+            color += hexaValues[Math.floor(Math.random() * 16)]
+        }
+        return color
+    }
+    let intervalId;
+    const startChangingColor = function () {
+        if (!intervalId) {
+            intervalId = setInterval(function () {
+                document.querySelector('body').style.background = randomColor()
+            }, 700)
+        }
+
+    }
+    const start = document.querySelector('#start').addEventListener('click', startChangingColor)
+
+    const stopChangingColor = function () {
+        clearInterval(intervalId)
+        intervalId = null
+    }
+    const stop = document.querySelector('#stop').addEventListener('click', stopChangingColor)
+</script>
+
+</html>
